@@ -89,7 +89,7 @@ const ProfileHeader = () => {
                                     <li key={item.name}>
                                         <Link
                                             href={item.href}
-                                            className="text-muted-foreground hover:text-foreground block duration-150">
+                                            className="text-muted-foreground hover:text-foreground block duration-150 font-roboto uppercase font-medium ">
                                             <span>{item.name}</span>
                                         </Link>
                                     </li>
@@ -134,7 +134,7 @@ const ProfileHeader = () => {
                                     size="sm"
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
                                     <Link href="#contact">
-                                        <span>Get In Touch</span>
+                                        <span>Hire Me</span>
                                     </Link>
                                 </Button>
                             </div>
