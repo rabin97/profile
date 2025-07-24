@@ -32,40 +32,7 @@ const Education = () => {
         },
     ]
 
-    const certifications = [
-        {
-            id: 1,
-            name: "Full Stack Development",
-            issuer: "Various Online Platforms",
-            date: "2023",
-            credentialId: "FS-DEV-2023",
-            icon: "💻",
-        },
-        {
-            id: 2,
-            name: "MERN Stack Development",
-            issuer: "Professional Experience",
-            date: "2022",
-            credentialId: "MERN-2022",
-            icon: "⚛️",
-        },
-        {
-            id: 3,
-            name: "Node.js & Express.js",
-            issuer: "Backend Development",
-            date: "2022",
-            credentialId: "NODE-2022",
-            icon: "🟢",
-        },
-        {
-            id: 4,
-            name: "Database Management",
-            issuer: "MongoDB & PostgreSQL",
-            date: "2022",
-            credentialId: "DB-2022",
-            icon: "🗄️",
-        },
-    ]
+    // Future certifications can be added here if needed
 
     const containerVariants = {
         hidden: { opacity: 0 },

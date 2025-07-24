@@ -9,6 +9,7 @@
   --font-playfair-display: var(--font-playfair-display), Georgia, serif;
   --font-roboto: var(--font-roboto), Arial, Helvetica, sans-serif;
   --font-montserrat: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  --font-geist-mono: var(--font-geist-mono), Courier, monospace;
   --color-sub-text: var(--sub-text);
 
   --color-sidebar-ring: var(--sidebar-ring);
@@ -47,6 +48,8 @@
 
   --animate-scroll: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
+  --animate-star-movement-bottom: star-movement-bottom linear infinite alternate;
+  --animate-star-movement-top: star-movement-top linear infinite alternate;
 }
 
 :root {
@@ -137,6 +140,28 @@
   @keyframes scroll {
     to {
       transform: translate(calc(-50% - 0.5rem));
+    }
+  }
+
+  @keyframes star-movement-bottom {
+    0% {
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-100%, 0%);
+      opacity: 0;
+    }
+  }
+
+  @keyframes star-movement-top {
+    0% {
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(100%, 0%);
+      opacity: 0;
     }
   }
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Roboto, Montserrat } from "next/font/google";
+import { Playfair_Display, Roboto, Montserrat, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const playfairDisplay = Playfair_Display({
@@ -13,6 +13,12 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const roboto = Roboto({
@@ -34,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${playfairDisplay.variable} ${roboto.variable} ${montserrat.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${roboto.variable} ${montserrat.variable} ${geistMono.variable} antialiased`}
       >
         {children}
       </body>

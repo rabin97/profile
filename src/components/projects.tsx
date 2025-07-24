@@ -3,7 +3,6 @@ import React from 'react'
 import Typography from './ui/typography'
 import Image from 'next/image';
 import { Card } from './ui/card';
-import { title } from 'process';
 import { TracingBeam } from './ui/tracing-beam';
 
 
@@ -20,31 +19,35 @@ interface Project {
 
 const projectsData: Project[] = [
     {
-        title: "Winkty UI",
-        description: "A comprehensive React component library designed for building scalable and maintainable user interfaces in",
-        image: "/project/winkty.png",
-        link: "https://ui.winkty.com/",
-        tags: ["React", "TypeScript", "UI/UX Design", "Component Library"],
-        date: "February 24, 2022 - Now",
-        featured: true,
-    }, {
         title: "PayPulse",
         description: "Enterprise Payroll Management System for Efficient Salary Processing and Employee Management",
         image: "/project/paypulse.png",
         link: "https://github.com/rabin97/payslips-main",
         tags: ["React", "Node.js", "MongoDB", "Payroll"],
-        date: "March 15, 2022 - Now",
+        date: "March 15, 2025 - Now",
         featured: true,
     },
+
     {
         title: "BeringTime",
         description: "A 3D/AR ring configurator for Bering Time that lets users design Custom rings in real-time and an AR 'Try-On' mode to preview rings on the hand.",
         image: "/project/beringtime.png",
         link: "https://beringtime-ring.netlify.app/",
         tags: ["React", "Firebase", "Time Tracking"],
-        date: "April 10, 2022 - Now",
+        date: "April 10, 2024 - June 15, 2024",
         featured: true,
-    }
+    },
+    {
+        title: "Winkty UI",
+        description: "A comprehensive React component library designed for building scalable and maintainable user interfaces in",
+        image: "/project/winkty.png",
+        link: "https://ui.winkty.com/",
+        tags: ["React", "TypeScript", "UI/UX Design", "Component Library"],
+        date: "December 24, 2024 - January 15, 2025",
+        featured: true,
+    },
+
+
 ]
 
 const ProjectCard = ({ project }: { project: Project }) => {
@@ -75,7 +78,7 @@ const Projects = () => {
             <div className='pl-12'>
 
                 {
-                    projectsData.map((project, index) => (
+                    projectsData.map((project) => (
                         <ProjectCard key={project.title} project={project} />
                     ))
 

@@ -117,43 +117,45 @@ const Hero = () => {
             <div className="container-custom relative z-10">
                 <div className="text-center max-w-4xl mx-auto">
                     <div ref={badgeRef} className="">
-                        <div className=" text-center px-4  flex gap-2  text-blue-800 rounded-full text-sm font-medium font-mono">
-                            <div className="hover:animate-bounce animate-bounce">👋</div> hey, I'm
+                        <div className=" text-center w-fit flex gap-2  text-blue-800 rounded-full text-sm font-medium font-mono">
+                            <div className="hover:animate-bounce animate-bounce">👋</div> hey, I&apos;m
                         </div>
                     </div>
 
-                    <SplitText
-                        text="Rabin Karmakar"
-                        className="text-5xl  md:text-7xl font-heading font-bold text-gray-900 mb-6 leading-tight font-playfair-display "
-                        delay={30}
-                        duration={0.8}
-                        ease="power3.out"
-                        splitType="chars"
-                        from={{ opacity: 0, y: 50 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-100px"
-                        textAlign="center"
-                        onLetterAnimationComplete={handleAnimationComplete}
-                    />
+                    <div className="flex items-end w-full">
+                        <SplitText
+                            text="Rabin Karmakar"
+                            className="text-5xl  md:text-6xl font-heading font-bold text-gray-900 mb-6 leading-tight font-geist-mono "
+                            delay={30}
+                            duration={0.8}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 50 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-100px"
+                            textAlign="center"
+                            onLetterAnimationComplete={handleAnimationComplete}
+                        />
 
-                    <SplitText
-                        text="Full Stack Developer"
-                        className="text-2xl pl-1 md:text-3xl font-heading font-medium text-gray-700 mb-8 font-serif"
-                        delay={60}
-                        duration={0.6}
-                        ease="power2.out"
-                        splitType="words"
-                        from={{ opacity: 0, y: 30 }}
-                        to={{ opacity: 1, y: 0 }}
-                        threshold={0.1}
-                        rootMargin="-80px"
-                        textAlign="center"
-                    />
+                        <SplitText
+                            text="Full Stack Developer"
+                            className="text-2xl pl-1 md:text-2xl font-heading font-medium text-gray-700 mb-8 font-geist-mono"
+                            delay={60}
+                            duration={0.6}
+                            ease="power2.out"
+                            splitType="words"
+                            from={{ opacity: 0, y: 30 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                            rootMargin="-80px"
+                            textAlign="center"
+                        />
+                    </div>
 
                     <SplitText
                         text="I craft exceptional digital experiences with modern technologies. Passionate about creating scalable, user-friendly applications that make a difference."
-                        className="text-lg md:text-xl font-roboto text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
+                        className="text-lg md:text-xl  text-gray-600 mb-12  mx-auto leading-relaxed -tracking-normal font-geist-mono"
                         delay={30}
                         duration={0.4}
                         ease="power2.out"
@@ -174,7 +176,7 @@ const Hero = () => {
                             className="h-14 "
                             onClick={(e: React.MouseEvent) => {
                                 e.preventDefault()
-                                document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" })
+                                document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })
                             }}
                         >
                             Projects
@@ -186,6 +188,15 @@ const Hero = () => {
                             enableHoverAnimation
                             variant="outline"
                             className="h-14  "
+                            onClick={(e: React.MouseEvent) => {
+                                e.preventDefault()
+                                const link = document.createElement('a')
+                                link.href = '/assets/resume_rabin_.pdf'
+                                link.download = 'Rabin_Karmakar_Resume.pdf'
+                                document.body.appendChild(link)
+                                link.click()
+                                document.body.removeChild(link)
+                            }}
                         >
                             <Download /> Resume
                         </Button>
@@ -193,9 +204,8 @@ const Hero = () => {
 
                     <div ref={socialRef} className="mt-16 flex justify-center space-x-6">
                         {[
-                            { href: "https://github.com", label: "GitHub", icon: <GitHub /> },
-                            { href: "https://linkedin.com", label: "LinkedIn", icon: <Linkedin /> },
-                            { href: "https://twitter.com", label: "Twitter", icon: "🐦" },
+                            { href: "https://github.com/rabin97", label: "GitHub", icon: <GitHub /> },
+                            { href: "https://www.linkedin.com/in/rabin-642894219/", label: "LinkedIn", icon: <Linkedin /> },
                         ].map((social) => (
                             <a
                                 key={social.label}

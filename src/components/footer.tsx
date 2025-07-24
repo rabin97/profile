@@ -1,23 +1,23 @@
 "use client"
 
 import { motion } from "motion/react"
-
+import StarBorder from "./ui/star-border"
+import { GitHub, Linkedin } from "./icons"
 const Footer = () => {
     const currentYear = new Date().getFullYear()
 
     const socialLinks = [
-        { href: "https://github.com", label: "GitHub", icon: "📚" },
-        { href: "https://linkedin.com", label: "LinkedIn", icon: "💼" },
-        { href: "https://twitter.com", label: "Twitter", icon: "🐦" },
-        { href: "mailto:john.doe@example.com", label: "Email", icon: "📧" },
+        { href: "https://github.com/rabin97", label: "GitHub", icon: <GitHub /> },
+        { href: "https://www.linkedin.com/in/rabin-642894219/", label: "LinkedIn", icon: <Linkedin /> },
     ]
 
     const quickLinks = [
-        { href: "#hero", label: "Home" },
-        { href: "#skills", label: "Skills" },
-        { href: "#projects", label: "Projects" },
-        { href: "#experience", label: "Experience" },
-        { href: "#contact", label: "Contact" },
+        { label: 'About', href: '#about' },
+        { label: 'Projects', href: '#projects' },
+        { label: 'Skills', href: '#skills' },
+        { label: 'Experience', href: '#experience' },
+        { label: 'Education', href: '#education' },
+        { label: 'Contact', href: '#contact' },
     ]
 
     const handleNavClick = (href: string) => {
@@ -33,8 +33,8 @@ const Footer = () => {
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     {/* Brand Section */}
                     <div>
-                        <h3 className="text-2xl font-playfair-display font-bold mb-4">Rabin Karmakar</h3>
-                        <p className="text-gray-300 mb-4 leading-relaxed">
+                        <h3 className="text-2xl font-geist-mono font-bold mb-4">Rabin Karmakar</h3>
+                        <p className="text-gray-300 mb-4 font-roboto leading-relaxed">
                             Full Stack Developer passionate about creating exceptional digital experiences with modern technologies
                             and best practices.
                         </p>
@@ -45,14 +45,12 @@ const Footer = () => {
                                     href={social.href}
                                     target={social.href.startsWith("http") ? "_blank" : undefined}
                                     rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                                    className="w-10 h-10 rounded-full flex items-center justify-center "
                                     whileHover={{ scale: 1.1, y: -2 }}
                                     whileTap={{ scale: 0.9 }}
                                     aria-label={`Visit my ${social.label}`}
                                 >
-                                    <span aria-hidden="true">
-                                        {social.icon}
-                                    </span>
+                                    {social.icon}
                                 </motion.a>
                             ))}
                         </div>
@@ -61,7 +59,7 @@ const Footer = () => {
                     {/* Quick Links */}
                     <div
                     >
-                        <h4 className="text-lg font-playfair-display font-semibold mb-4">Quick Links</h4>
+                        <h4 className="text-lg font-geist-mono font-semibold mb-4">Quick Links</h4>
                         <nav aria-label="Footer navigation">
                             <ul className="space-y-2">
                                 {quickLinks.map((link) => (
@@ -72,7 +70,7 @@ const Footer = () => {
                                                 e.preventDefault()
                                                 handleNavClick(link.href)
                                             }}
-                                            className="text-gray-300 hover:text-white transition-colors"
+                                            className="text-gray-300 hover:text-white transition-colors font-roboto"
                                         >
                                             {link.label}
                                         </a>
@@ -84,15 +82,19 @@ const Footer = () => {
 
                     {/* Contact Info */}
                     <div >
-                        <h4 className="text-lg font-playfair-display font-semibold mb-4">Get In Touch</h4>
-                        <div className="space-y-2 text-gray-300">
-                            <p>📧 john.doe@example.com</p>
-                            <p>📱 +1 (555) 123-4567</p>
-                            <p>📍 San Francisco, CA</p>
+                        <h4 className="text-lg font-geist-mono font-semibold mb-4">Connect with Me</h4>
+                        <div className="space-y-2 text-gray-300 font-roboto">
+                            <p>📧 rabinkarmakar947@gmail.com</p>
+                            <p>📱 +91 8967873860</p>
+                            <p>📍 Bankura West Bengal</p>
                         </div>
-                        <div className="mt-4 p-4 bg-gray-800 rounded-lg">
+                        <StarBorder
+                            className="mt-4 w-full"
+                            color="#42f563"
+                            speed="2s"
+                        >
                             <p className="text-sm text-gray-300">Available for freelance projects and full-time opportunities</p>
-                        </div>
+                        </StarBorder>
                     </div>
                 </div>
 

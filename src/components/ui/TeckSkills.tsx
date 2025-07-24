@@ -1,14 +1,5 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-    motion,
-    useTransform,
-    AnimatePresence,
-    useMotionValue,
-    useSpring,
-} from "motion/react";
-import { Progress } from "./progress";
 import Typography from "./typography";
 import Image from "next/image";
 import { Button } from "./button";
@@ -24,35 +15,18 @@ export const TechSkills = ({
         icon?: string;
     }[];
 }) => {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-    const springConfig = { stiffness: 100, damping: 5 };
-    const x = useMotionValue(0); // going to set this value on mouse move
-    // rotate the tooltip
-    const rotate = useSpring(
-        useTransform(x, [-100, 100], [-45, 45]),
-        springConfig,
-    );
-    // translate the tooltip
-    const translateX = useSpring(
-        useTransform(x, [-100, 100], [-50, 50]),
-        springConfig,
-    );
-    const handleMouseMove = (event: any) => {
-        const halfWidth = event.target.offsetWidth / 2;
-        x.set(event.nativeEvent.offsetX - halfWidth); // set the x value, which is then used in transform and rotate
-    };
+
+
 
     return (
         <>
             {items.map((item) => {
                 return (
                     <button
-                        onMouseEnter={() => setHoveredIndex(item.id)}
-                        onMouseLeave={() => setHoveredIndex(null)}
                         className="group relative"
                         key={item.name}
                     >
-                        <AnimatePresence mode="popLayout">
+                        {/* <AnimatePresence mode="popLayout">
                             {hoveredIndex === item.id && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20, scale: 0.6 }}
@@ -90,11 +64,10 @@ export const TechSkills = ({
                                     </div>
                                 </motion.div>
                             )}
-                        </AnimatePresence>
+                        </AnimatePresence> */}
                         <Button
                             enableHoverAnimation={false}
-                            onMouseMove={handleMouseMove}
-                            className="relative flex px-4 hover:bg-white items-center justify-center p-3 border rounded-md bg-white hover:shadow-md transition"
+                            className="relative flex px-4 hover:bg-white items-center justify-center p-3  rounded-md bg-white  transition"
                         >
                             {item.icon && (
                                 <Image
