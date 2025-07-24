@@ -6,6 +6,9 @@ import { useEffect } from "react"
 import Projects from "@/components/projects"
 import Skills from "@/components/skills"
 import { TimelineDemo } from "@/components/experience"
+import Education from "@/components/education"
+import HireMeForm from "@/components/contact"
+import Footer from "@/components/footer"
 
 
 export default function Home() {
@@ -135,37 +138,75 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="min-h-screen  bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
+        <section id="education" className="min-h-screen pt-12 bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
+          <div className="max-w-4xl mx-auto text-left">
+            <div className="flex flex-col items-start justify-start mb-6">
+              <SplitText
+                text="Education"
+                className="text-3xl md:text-4xl font-bold mb-1 text-foreground font-playfair-display"
+                delay={80}
+                duration={0.5}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 30 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.2}
+                rootMargin="-80px"
+                textAlign="left"
+              />
+              <SplitText
+                text="My academic journey in Computer Science & Engineering, building a strong foundation in software development and advanced technologies."
+                className="text-lg text-muted-foreground mb-4 leading-tight"
+                delay={40}
+                duration={0.4}
+                ease="power2.out"
+                splitType="words"
+                from={{ opacity: 0, y: 15 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.2}
+                rootMargin="-60px"
+                textAlign="left"
+              />
+            </div>
+            <Education />
+          </div>
+        </section>
+
+        <section id="contact" className="min-h-screen scroll-mt-20  bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center">
           <div className="max-w-4xl mx-auto  text-center">
-            <SplitText
-              text="Contact"
-              className="text-3xl md:text-5xl font-bold mb-6 text-foreground"
-              delay={80}
-              duration={0.5}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 30 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.2}
-              rootMargin="-80px"
-              textAlign="center"
-            />
-            <SplitText
-              text="Ready to get in touch? The header adapts perfectly to your content with crisp light theme styling."
-              className="text-lg text-muted-foreground leading-relaxed"
-              delay={40}
-              duration={0.4}
-              ease="power2.out"
-              splitType="words"
-              from={{ opacity: 0, y: 15 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.2}
-              rootMargin="-60px"
-              textAlign="center"
-            />
+            <div className="flex flex-col items-start justify-start mb-6">
+              <SplitText
+                text="Get In Touch"
+                className="text-3xl md:text-4xl font-bold mb-1 text-foreground font-playfair-display"
+                delay={80}
+                duration={0.5}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 30 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.2}
+                rootMargin="-80px"
+                textAlign="left"
+              />
+              <SplitText
+                text="I'm always open to discussing new projects and opportunities."
+                className="text-lg text-muted-foreground mb-4 leading-tight"
+                delay={40}
+                duration={0.4}
+                ease="power2.out"
+                splitType="words"
+                from={{ opacity: 0, y: 15 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.2}
+                rootMargin="-60px"
+                textAlign="left"
+              />
+            </div>
+            <HireMeForm />
           </div>
         </section>
       </main >
+      <Footer />
     </>
   )
 }
