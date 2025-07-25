@@ -27,13 +27,13 @@ export default function Home() {
     <>
       <ProfileHeader />
       <main id="main-content" className="">
-        <section id="about" className="min-h-screen bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
+        <section id="about" className="min-h-screen max-md:px-4 bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
           <div className="max-w-4xl mx-auto  text-center">
             <Hero />
           </div>
 
         </section >
-        <section id="projects" className="min-h-screen   bg-gradient-to-b  from-indigo-50 to-white py-4 scroll-mt-20  flex items-center justify-center">
+        <section id="projects" className="min-h-screen max-md:px-4  bg-gradient-to-b  from-indigo-50 to-white py-8 scroll-mt-20  flex items-center justify-center">
           <div className="max-w-4xl mx-auto  text-left ">
             <div className="flex flex-col items-start justify-start mb-6 ">
               <Typography
@@ -53,7 +53,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="skills" className="min-h-screen scroll-mt-12  bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
+        <section id="skills" className="min-h-screen scroll-mt-12 py-8 max-md:px-4 bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
           <div className="max-w-4xl mx-auto  text-left">
             <div className="flex flex-col items-start justify-start mb-6">
               <Typography
@@ -74,7 +74,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="experience" className="min-h-screen scroll-mt-24  bg-gradient-to-b to-white from-indigo-50 flex items-center justify-center">
+        <section id="experience" className="min-h-screen scroll-mt-24 py-8  max-md:px-4 bg-gradient-to-b to-white from-indigo-50 flex items-center justify-center">
           <div className="max-w-4xl mx-auto w-full text-left px-4">
             <div className="flex flex-col items-start justify-start mb-6">
               <Typography
@@ -96,7 +96,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="education" className="min-h-screen pt-12 scroll-mt-12 bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
+        <section id="education" className="min-h-screen max-md:px-4 py-8 scroll-mt-12 bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
           <div className="max-w-4xl mx-auto text-left">
             <div className="flex flex-col items-start justify-start mb-6">
               <Typography
@@ -116,7 +116,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="min-h-screen scroll-mt-12  bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center">
+        <section id="contact" className="min-h-screen scroll-mt-12 py-8 max-md:px-4  bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center">
           <div className="max-w-4xl mx-auto w-full text-center">
             <div className="flex flex-col items-start justify-start mb-6">
               <Typography

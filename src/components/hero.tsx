@@ -107,7 +107,7 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="min-h-screen flex items-center justify-center relative overflow-hidden "
+            className="min-h-screen flex items-center justify-center relative overflow-hidden"
             aria-label="Hero section"
         >
             {/* Animated background elements */}
@@ -131,17 +131,17 @@ const Hero = () => {
             </div>
 
             <div className="container-custom relative z-10">
-                <div className="text-center max-w-4xl mx-auto">
+                <div className="text-center max-w-4xl mx-auto ">
                     <div ref={badgeRef} className="">
                         <div className=" text-center w-fit flex gap-2  text-blue-800 rounded-full text-sm font-medium font-mono">
                             <div className="hover:animate-bounce animate-bounce">👋</div> hey, I&apos;m
                         </div>
                     </div>
 
-                    <div className="flex items-end w-full">
+                    <div className="flex max-md:flex-col items-end max-md:items-start  w-full">
                         <SplitText
                             text="Rabin Karmakar"
-                            className="text-5xl  md:text-6xl font-heading font-bold text-gray-900 mb-6 leading-tight font-geist-mono "
+                            className="text-3xl sm:text-4xl  md:text-6xl font-heading font-bold text-gray-900 max-md:mb-0 mb-6 leading-tight font-geist-mono "
                             delay={30}
                             duration={0.8}
                             ease="power3.out"
@@ -150,13 +150,13 @@ const Hero = () => {
                             to={{ opacity: 1, y: 0 }}
                             threshold={0.1}
                             rootMargin="-100px"
-                            textAlign="center"
+                            textAlign="left"
                             onLetterAnimationComplete={handleAnimationComplete}
                         />
 
                         <SplitText
                             text="Full Stack Developer"
-                            className="text-2xl pl-1 md:text-2xl font-heading font-medium text-gray-700 mb-8 font-geist-mono"
+                            className="text-xl pl-1 md:text-2xl font-heading font-medium text-gray-700 mb-8 font-geist-mono"
                             delay={60}
                             duration={0.6}
                             ease="power2.out"
@@ -165,7 +165,7 @@ const Hero = () => {
                             to={{ opacity: 1, y: 0 }}
                             threshold={0.1}
                             rootMargin="-80px"
-                            textAlign="center"
+                            textAlign="left"
                         />
                     </div>
 

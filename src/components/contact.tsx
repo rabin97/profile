@@ -87,11 +87,9 @@ const HireMeForm = () => {
     ];
 
     return (
-
-
-        <div className="grid lg:grid-cols-2 w-full gap-12">
+        <div className="grid lg:grid-cols-2 w-full gap-12 ">
             {/* Contact Information */}
-            <div className="bg-white rounded-2xl shadow-xl p-2 py-6">
+            <div className="bg-white rounded-2xl shadow-sm p-2 py-6 w-full">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 font-roboto">Contact Info</h2>
                 <div className="space-y-1">
                     {contactInfo.map((info) => {
@@ -102,7 +100,7 @@ const HireMeForm = () => {
                                 href={info.href}
                                 target={info.href.startsWith('http') ? '_blank' : undefined}
                                 rel={info.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                                className="flex items-center space-x-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group"
+                                className="flex items-center space-x-4 max-md:p-2 p-4 rounded-xl hover:bg-gray-50 transition-colors group"
                             >
                                 <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
                                     <IconComponent className="w-5 h-5 text-blue-600" />
@@ -120,7 +118,7 @@ const HireMeForm = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
+            <div className="bg-white rounded-2xl shadow-sm p-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Message</h2>
 
                 <Form {...form}>

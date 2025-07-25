@@ -351,7 +351,7 @@ function Button({
       {enableHoverAnimation && (
         <div
           ref={fillCircleRef}
-          className="pointer-events-none absolute z-0 rounded-full"
+          className="pointer-events-none absolute z-0 rounded-full max-md:hidden"
           style={{
             backgroundColor: fillColor,
             width: "20px",

@@ -60,7 +60,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <Typography variant="body2" className="mb-4 max-w-3/4 font-roboto leading-tight">
                 {project.description}
             </Typography>
-            <Card className="relative w-full aspect-video h-[30rem]  overflow-hidden rounded-lg shadow-lg">
+            <Card className="relative w-full aspect-video   overflow-hidden rounded-lg shadow-lg">
                 <Image
                     src={project.image}
                     alt={project.title}
