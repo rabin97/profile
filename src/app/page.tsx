@@ -33,7 +33,6 @@ export default function Home() {
           </div>
 
         </section >
-
         <section id="projects" className="min-h-screen   bg-gradient-to-b  from-indigo-50 to-white py-4 scroll-mt-20  flex items-center justify-center">
           <div className="max-w-4xl mx-auto  text-left ">
             <div className="flex flex-col items-start justify-start mb-6 ">

@@ -1,13 +1,19 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import SplitText from "./ui/split-text"
 import { Button } from "./ui/button"
-import { Download } from "lucide-react"
+import { Download, Loader2 } from "lucide-react"
 import { GitHub, Linkedin } from "./icons"
+import dynamic from "next/dynamic"
 
+// import PdfViewer from "./ui/PdfViewer"
+const PdfViewer = dynamic(() => import("./ui/PdfViewer"), {
+    ssr: false,
+    loading: () => <div className="flex items-center justify-center h-full"><Loader2 className="animate-spin" /></div>
+})
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -22,6 +28,16 @@ const Hero = () => {
     const scrollIndicatorRef = useRef<HTMLDivElement>(null)
     const circleRef = useRef<HTMLDivElement>(null)
 
+
+    const [showPdfViewer, setShowPdfViewer] = useState(false);
+
+    const handleOpenViewer = () => {
+        setShowPdfViewer(true);
+    };
+
+    const handleCloseViewer = () => {
+        setShowPdfViewer(false);
+    };
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -170,10 +186,10 @@ const Hero = () => {
                     <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <Button
                             size="lg"
-                            fillColor="#fcba03"
+                            fillColor="#000"
                             enableHoverAnimation
                             variant="outline"
-                            className="h-14 "
+                            className="h-14 hover:text-white "
                             onClick={(e: React.MouseEvent) => {
                                 e.preventDefault()
                                 document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" })
@@ -184,10 +200,10 @@ const Hero = () => {
 
                         <Button
                             size="lg"
-                            fillColor="#fcba03"
+                            fillColor="#000"
                             enableHoverAnimation
                             variant="outline"
-                            className="h-14  "
+                            className="h-14 hover:text-white  "
                             onClick={(e: React.MouseEvent) => {
                                 e.preventDefault()
                                 const link = document.createElement('a')
@@ -199,6 +215,16 @@ const Hero = () => {
                             }}
                         >
                             <Download /> Resume
+                        </Button>
+                        <Button
+                            size="lg"
+                            fillColor="#000"
+                            enableHoverAnimation
+                            variant="outline"
+                            className="h-14 hover:text-white  "
+                            onClick={handleOpenViewer}
+                        >
+                            View
                         </Button>
                     </div>
 
@@ -236,6 +262,13 @@ const Hero = () => {
                     </div>
                 </a>
             </div>
+            {showPdfViewer && (
+                <PdfViewer
+                    fileUrl="/assets/resume_rabin_.pdf"
+                    fileName="resume_rabin_karmakar.pdf"
+                    onClose={handleCloseViewer}
+                />
+            )}
         </section>
     )
 }

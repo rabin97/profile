@@ -75,13 +75,16 @@ const ProfileHeader = () => {
                                 <Logo />
                             </Link>
 
-                            <button
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                fillColor="#000"
                                 onClick={() => setMenuState(!menuState)}
                                 aria-label={menuState ? 'Close Menu' : 'Open Menu'}
-                                className="relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
+                                className="hover:text-white relative z-20 -m-2.5 -mr-4 block cursor-pointer p-2.5 lg:hidden">
                                 <Menu className="group-data-[state=active]:rotate-180 group-data-[state=active]:scale-0 group-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
                                 <X className="group-data-[state=active]:rotate-0 group-data-[state=active]:scale-100 group-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
-                            </button>
+                            </Button>
                         </div>
 
                         <div className="absolute inset-0 m-auto hidden size-fit lg:block">
@@ -114,16 +117,14 @@ const ProfileHeader = () => {
                             </div>
                             <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                                 <Button
-                                    asChild
                                     variant="outline"
                                     size="sm"
-                                    className={cn(isScrolled && 'lg:hidden')}>
+                                    className={cn(isScrolled && 'lg:hidden ', "hover:text-white")}>
                                     <Link href="#contact">
                                         <span>Contact</span>
                                     </Link>
                                 </Button>
                                 <Button
-                                    asChild
                                     size="sm"
                                     className={cn(isScrolled && 'lg:hidden')}>
                                     <Link href="#projects">
@@ -131,7 +132,6 @@ const ProfileHeader = () => {
                                     </Link>
                                 </Button>
                                 <Button
-                                    asChild
                                     size="sm"
                                     className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
                                     <Link href="#contact">

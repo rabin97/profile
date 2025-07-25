@@ -56,7 +56,7 @@ function Button({
   variant,
   size,
   asChild = false,
-  fillColor = "#99EA48",
+  fillColor = "#000",
   enableHoverAnimation = true,
   animationDuration = 1.5,
   onMouseEnter,
