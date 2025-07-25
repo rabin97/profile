@@ -100,7 +100,7 @@ const Footer = () => {
 
                 {/* Bottom Section */}
                 <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center" >
-                    <p className="text-gray-400 text-sm mb-4 md:mb-0">© {currentYear} John Doe. All rights reserved.</p>
+                    <p className="text-gray-400 text-sm mb-4 md:mb-0">© {currentYear} Rabin Karmakar. All rights reserved.</p>
                     <p className="text-gray-400 text-sm">Built with Next.js 15 & Motion</p>
                 </div>
             </div>
