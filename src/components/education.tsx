@@ -17,7 +17,7 @@ const Education = () => {
             gpa: "8.09/10",
             status: "Pursuing",
             description: "Currently pursuing Master of Technology in Computer Science & Engineering with focus on advanced software engineering concepts and research.",
-            coursework: ["Advanced Algorithms", "Machine Learning", "Software Architecture", "Data Mining", "Research Methodology"],
+            coursework: ["Advanced Algorithms", "Advanced DBMS", "Advances Computer Network And Security", "Mobile Computing", "Data Mining", "Image Processing"],
         },
         {
             id: 2,
@@ -28,7 +28,7 @@ const Education = () => {
             gpa: "8.66/10",
             status: "Completed",
             description: "Bachelor of Technology in Computer Science & Engineering with strong foundation in software development, data structures, and algorithms.",
-            coursework: ["Data Structures", "Algorithms", "Database Systems", "Software Engineering", "Web Development", "Operating Systems"],
+            coursework: ["Data Structures", "Algorithms", "Database Systems", "Software Engineering", "Operating Systems", " Computer Networks", "Mathematics for Computer Science"],
         },
     ]
 
