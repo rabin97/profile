@@ -128,8 +128,8 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
     };
 
     return (
-        <div className='flex flex-col mb-8'>
-            <Link href={project.link} target="_blank" className="hover:text-blue-500 group">
+        <Link href={project.link} target="_blank" className="hover:text-blue-500 group">
+            <div className='flex flex-col mb-8'>
                 <Typography variant="h6" className="font-roboto leading-5">
                     <span className='flex items-center gap-2'>
                         {project.title}
@@ -138,39 +138,39 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
                     <br />
                     <span className="text-sm text-muted-foreground">{project.date}</span>
                 </Typography>
-            </Link>
-            <Typography variant="body2" className="mb-4 max-w-3/4 font-roboto leading-tight">
-                {project.description}
-            </Typography>
+                <Typography variant="body2" className="mb-4 max-w-3/4 font-roboto leading-tight">
+                    {project.description}
+                </Typography>
 
-            <Card
-                className="relative group w-full aspect-video overflow-hidden rounded-lg shadow-lg p-0 cursor-pointer"
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-            >
-                <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className={`rounded-lg object-cover transition-opacity duration-300 ${isHovered && project.video ? 'opacity-0' : 'opacity-100'
-                        }`}
-                    priority={false}
-                    loading="lazy"
-                />
-                {project.video && (
-                    <video
-                        ref={videoRef}
-                        src={project.video}
-                        className={`absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
-                            }`}
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
+                <Card
+                    className="relative group w-full aspect-[6/3.2] overflow-hidden rounded-lg shadow-lg p-0 cursor-pointer"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className={`rounded-lg object-cover transition-opacity duration-300 `}
+                        priority={false}
+                        loading="lazy"
                     />
-                )}
-            </Card>
-        </div>
+                    {project.video && (
+                        <video
+                            ref={videoRef}
+                            src={project.video}
+                            className={`absolute inset-0 w-full h-full object-cover rounded-lg transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'
+                                }`}
+                            muted
+                            loop
+                            playsInline
+                            preload="metadata"
+                        />
+                    )}
+                </Card>
+            </div>
+        </Link>
+
     )
 });
 

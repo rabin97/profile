@@ -1,9 +1,13 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+    createContext,
+    useContext,
+    useState,
+    useEffect,
+} from 'react';
 
 interface LoadingContextType {
     isLoading: boolean;
-    setIsLoading: (loading: boolean) => void;
     showLoader: () => void;
     hideLoader: () => void;
 }
@@ -24,53 +28,27 @@ interface LoadingProviderProps {
 
 export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [isFirstLoad, setIsFirstLoad] = useState(true);
 
     useEffect(() => {
-        // Show loader on initial page load
-        const handleLoad = () => {
-            // Add a small delay to ensure all components are mounted
-            setTimeout(() => {
-                setIsLoading(false);
-                setIsFirstLoad(false);
-            }, 1000); // Adjust timing as needed
-        };
+        // Let the loader show for a brief moment to prevent layout shift
+        const timeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 200); // Just 200ms to hide flash of unstyled content
 
-        // Check if page is already loaded
-        if (document.readyState === 'complete') {
-            handleLoad();
-        } else {
-            window.addEventListener('load', handleLoad);
-        }
-
-        // Handle page visibility changes (for better UX on tab switching)
-        const handleVisibilityChange = () => {
-            if (document.hidden) return;
-
-            // If user comes back to tab and it's been a while, show loader briefly
-            if (!isFirstLoad && document.visibilityState === 'visible') {
-                setIsLoading(true);
-                setTimeout(() => setIsLoading(false), 300);
-            }
-        };
-
-        document.addEventListener('visibilitychange', handleVisibilityChange);
-
-        return () => {
-            window.removeEventListener('load', handleLoad);
-            document.removeEventListener('visibilitychange', handleVisibilityChange);
-        };
-    }, [isFirstLoad]);
+        return () => clearTimeout(timeout);
+    }, []);
 
     const showLoader = () => setIsLoading(true);
     const hideLoader = () => setIsLoading(false);
 
-    const value = React.useMemo(() => ({
-        isLoading,
-        setIsLoading,
-        showLoader,
-        hideLoader,
-    }), [isLoading]);
+    const value = React.useMemo(
+        () => ({
+            isLoading,
+            showLoader,
+            hideLoader,
+        }),
+        [isLoading]
+    );
 
     return (
         <LoadingContext.Provider value={value}>
@@ -78,5 +56,3 @@ export const LoadingProvider: React.FC<LoadingProviderProps> = ({ children }) =>
         </LoadingContext.Provider>
     );
 };
-
-export default LoadingProvider;
