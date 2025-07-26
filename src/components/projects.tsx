@@ -67,13 +67,55 @@ const projectsData: Project[] = [
 
 const ProjectCard = React.memo(({ project }: { project: Project }) => {
     const [isHovered, setIsHovered] = React.useState(false);
+    const [isVideoLoaded, setIsVideoLoaded] = React.useState(false);
     const videoRef = React.useRef<HTMLVideoElement>(null);
+
+    // Preload video when component mounts
+    React.useEffect(() => {
+        if (videoRef.current && project.video) {
+            const video = videoRef.current;
+
+            const handleCanPlayThrough = () => {
+                setIsVideoLoaded(true);
+            };
+
+            const handleLoadedMetadata = () => {
+                // Video metadata is loaded, video is ready to play
+                video.currentTime = 0;
+            };
+
+            video.addEventListener('canplaythrough', handleCanPlayThrough);
+            video.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+            // Start loading the video
+            video.load();
+
+            return () => {
+                video.removeEventListener('canplaythrough', handleCanPlayThrough);
+                video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+            };
+        }
+    }, [project.video]);
 
     const handleMouseEnter = () => {
         setIsHovered(true);
         if (videoRef.current && project.video) {
-            videoRef.current.currentTime = 0;
-            videoRef.current.play().catch(console.error);
+            const video = videoRef.current;
+            video.currentTime = 0;
+
+            // Try to play immediately if loaded, otherwise wait for it to be ready
+            if (isVideoLoaded) {
+                video.play().catch(console.error);
+            } else {
+                // If video isn't fully loaded yet, play as soon as it's ready
+                const playWhenReady = () => {
+                    if (isHovered) { // Only play if still hovered
+                        video.play().catch(console.error);
+                    }
+                    video.removeEventListener('canplaythrough', playWhenReady);
+                };
+                video.addEventListener('canplaythrough', playWhenReady);
+            }
         }
     };
 
@@ -124,7 +166,7 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
                         muted
                         loop
                         playsInline
-                        preload="none"
+                        preload="metadata"
                     />
                 )}
             </Card>
