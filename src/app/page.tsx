@@ -27,7 +27,7 @@ export default function Home() {
     <>
       <ProfileHeader />
       <main id="main-content" className="">
-        <section id="about" className="min-h-screen max-md:px-4 bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
+        <section id="about" className="min-h-screen bg-gradient-to-b from-white to-indigo-50 flex items-center justify-center">
           <div className="max-w-4xl mx-auto  text-center">
             <Hero />
           </div>

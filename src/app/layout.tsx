@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Roboto, Montserrat, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import RootClientLayout from "./root-client-layout";
+
 
 const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
@@ -152,7 +154,9 @@ export default function RootLayout({
       <body
         className={`${playfairDisplay.variable} ${roboto.variable} ${montserrat.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <RootClientLayout>
+          {children}
+        </RootClientLayout>
       </body>
     </html>
   );

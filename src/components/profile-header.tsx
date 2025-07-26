@@ -24,12 +24,23 @@ const Logo = ({ className }: { className?: string }) => {
 
 const ProfileHeader = () => {
     const [menuState, setMenuState] = React.useState(false)
-    const [isScrolled, setIsScrolled] = React.useState(false)
+    // Initialize with a function to get the initial scroll state on client-side
+    const [isScrolled, setIsScrolled] = React.useState(() => {
+        if (typeof window !== 'undefined') {
+            return window.scrollY > 50
+        }
+        return false
+    })
 
-    React.useEffect(() => {
+    React.useLayoutEffect(() => {
+        // Use layoutEffect for immediate DOM updates before paint
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50)
         }
+
+        // Set initial state immediately
+        handleScroll()
+
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
@@ -38,8 +49,14 @@ const ProfileHeader = () => {
         <header>
             <nav
                 data-state={menuState && 'active'}
-                className="fixed z-50 w-full px-2 group">
-                <div className={cn('mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12', isScrolled && 'bg-background/95 max-w-4xl rounded-2xl border border-border/50 backdrop-blur-xl shadow-sm lg:px-5')}>
+                className="fixed z-50 w-full px-2 group"
+                style={{
+                    '--scroll-state': isScrolled ? '1' : '0'
+                } as React.CSSProperties}>
+                <div className={cn(
+                    'mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12',
+                    isScrolled && 'bg-background/95 max-w-4xl rounded-2xl border border-border/50 backdrop-blur-xl shadow-sm lg:px-5'
+                )}>
                     <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
                         <div className="flex w-full justify-between lg:w-auto">
                             <Link

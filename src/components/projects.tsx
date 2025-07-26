@@ -135,13 +135,34 @@ const ProjectCard = React.memo(({ project }: { project: Project }) => {
 ProjectCard.displayName = 'ProjectCard';
 
 const Projects = React.memo(() => {
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
+    const content = (
+        <div className={isMobile ? 'px-4' : 'pl-12'}>
+            {projectsData.map((project) => (
+                <ProjectCard key={project.title} project={project} />
+            ))}
+        </div>
+    );
+
+    if (isMobile) {
+        return content;
+    }
+
     return (
         <TracingBeam className="pr-3">
-            <div className='pl-12'>
-                {projectsData.map((project) => (
-                    <ProjectCard key={project.title} project={project} />
-                ))}
-            </div>
+            {content}
         </TracingBeam>
     )
 });

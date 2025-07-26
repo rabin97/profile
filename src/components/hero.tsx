@@ -107,7 +107,7 @@ const Hero = () => {
         <section
             ref={heroRef}
             id="hero"
-            className="min-h-screen flex items-center justify-center relative overflow-hidden"
+            className="min-h-screen flex items-center justify-center relative overflow-hidden px-4"
             aria-label="Hero section"
         >
             {/* Animated background elements */}
@@ -183,7 +183,7 @@ const Hero = () => {
                         textAlign="center"
                     />
 
-                    <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <div ref={buttonsRef} className="flex flex-wrap sm:flex-row gap-4 justify-center items-center">
                         <Button
                             size="lg"
                             fillColor="#000"
