@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Globe } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -8,10 +10,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
+import { sendContactEmail } from '@/actions/contact';
 
 const formSchema = z.object({
     name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-    email: z.string().min(1, "Email is required").email("Please enter a valid email address."),
+    email: z.string().min(1, "Email is required").email({ message: "Please enter a valid email address." }),
     subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
     message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
@@ -33,15 +36,20 @@ const HireMeForm = () => {
 
     const { handleSubmit, formState: { isSubmitting } } = form;
 
-    const onSubmit = async (_formData: FormData) => {
+    const onSubmit = async (formData: FormData) => {
         try {
-            // Simulate form submission
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            setSubmitStatus('success');
-            form.reset();
-            console.log('Form submitted:', _formData);
-        } catch {
+            const result = await sendContactEmail(formData);
+
+            if (result.success) {
+                setSubmitStatus('success');
+                form.reset();
+            } else {
+                setSubmitStatus('error');
+                console.error('Failed to send email:', result.message);
+            }
+        } catch (error) {
             setSubmitStatus('error');
+            console.error('Error submitting form:', error);
         } finally {
             setTimeout(() => setSubmitStatus('idle'), 5000);
         }
@@ -193,7 +201,7 @@ const HireMeForm = () => {
                             <Button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full py-4 px-6 text-white font-medium transition-all shadow-lg hover:shadow-xl"
+                                className="w-full cursor-pointer py-4 px-6 text-white font-medium transition-all shadow-lg hover:shadow-xl"
                                 size="lg"
                             >
                                 {isSubmitting ? (

@@ -15,6 +15,11 @@ import GitHub from "./github.svg";
 import VisualStudioCode from "./visual-studio-code.svg";
 import Postman from "./postman.svg";
 import ESLint from "./eslint.svg";
+import Nest from "./nestjs.svg";
+import GraphQL from "./graphql.svg";
+import Redis from "./redis.svg";
+import DigitalOcean from "./digitalocean.svg";
+import Prettier from "./prettier.svg";
 
 export {
   React,
@@ -34,4 +39,9 @@ export {
   VisualStudioCode,
   Postman,
   ESLint,
+  Nest,
+  GraphQL,
+  Redis,
+  DigitalOcean,
+  Prettier,
 };
