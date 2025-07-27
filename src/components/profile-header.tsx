@@ -16,7 +16,7 @@ const menuItems = [
 
 const Logo = ({ className }: { className?: string }) => {
     return (
-        <div className='flex items-center space-x-2'>
+        <div className={cn('flex items-center space-x-2', className)}>
             <span className='bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-3xl font-bold font-playfair-display text-transparent px-2 py-1 rounded'>RK</span>
         </div>
     )

@@ -3,6 +3,29 @@
 import nodemailer from "nodemailer";
 import { z } from "zod";
 
+// Define proper types for nodemailer
+type MailOptions = {
+  from: string;
+  to: string;
+  subject: string;
+  html: string;
+};
+
+type MailResult = {
+  messageId: string;
+  accepted: string[];
+  rejected: string[];
+  pending: string[];
+  response: string;
+};
+
+type EmailError = Error & {
+  code?: string;
+  response?: string;
+  responseCode?: number;
+  command?: string;
+};
+
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.email({ message: "Please enter a valid email address" }),
@@ -14,9 +37,9 @@ export type ContactFormData = z.infer<typeof contactFormSchema>;
 
 // Enhanced helper function to handle email sending with verification
 async function sendEmailsWithVerification(
-  transporter: any,
-  ownerMailOptions: any,
-  autoReplyOptions: any,
+  transporter: nodemailer.Transporter,
+  ownerMailOptions: MailOptions,
+  autoReplyOptions: MailOptions,
   validatedData: ContactFormData
 ) {
   // First, send the notification email to you (the owner)
@@ -34,7 +57,7 @@ async function sendEmailsWithVerification(
       autoReplyResult.messageId
     );
     autoReplySuccess = true;
-  } catch (autoReplyErr: any) {
+  } catch (autoReplyErr: unknown) {
     console.error(
       "Failed to send auto-reply confirmation email:",
       autoReplyErr
@@ -73,11 +96,17 @@ async function sendEmailsWithVerification(
 }
 
 // Function to check if the email error indicates an invalid/fake email
-function checkIfInvalidEmail(error: any): boolean {
+function checkIfInvalidEmail(error: unknown): boolean {
   if (!error) return false;
 
-  const errorMessage = error.message?.toLowerCase() || "";
-  const errorCode = error.code?.toLowerCase() || "";
+  const errorMessage =
+    error && typeof error === "object" && "message" in error
+      ? String((error as { message: string }).message).toLowerCase()
+      : "";
+  const errorCode =
+    error && typeof error === "object" && "code" in error
+      ? String((error as { code: string }).code).toLowerCase()
+      : "";
 
   // Common indicators of invalid/fake emails
   const invalidEmailIndicators = [
@@ -102,9 +131,11 @@ function checkIfInvalidEmail(error: any): boolean {
   );
 }
 
-function createOwnerNotificationEmail(validatedData: ContactFormData) {
+function createOwnerNotificationEmail(
+  validatedData: ContactFormData
+): MailOptions {
   return {
-    from: process.env.EMAIL_USER,
+    from: process.env.EMAIL_USER || "rabinkarmakar947@gmail.com",
     to: "rabinkarmakar947@gmail.com",
     subject: `New Contact Form Message: ${validatedData.subject}`,
     html: `
@@ -137,9 +168,9 @@ function createOwnerNotificationEmail(validatedData: ContactFormData) {
   };
 }
 
-function createAutoReplyEmail(validatedData: ContactFormData) {
+function createAutoReplyEmail(validatedData: ContactFormData): MailOptions {
   return {
-    from: process.env.EMAIL_USER,
+    from: process.env.EMAIL_USER || "rabinkarmakar947@gmail.com",
     to: validatedData.email,
     subject: `Thank you for contacting me, ${validatedData.name}!`,
     html: `
@@ -188,7 +219,7 @@ function createWarningEmail(
   validatedData: ContactFormData,
   error: unknown,
   isLikelyInvalid: boolean
-) {
+): MailOptions {
   const errorMessage =
     error && typeof error === "object" && "message" in error
       ? String(error.message)
@@ -202,7 +233,7 @@ function createWarningEmail(
   const textColor = isLikelyInvalid ? "#721c24" : "#d63031";
 
   return {
-    from: process.env.EMAIL_USER,
+    from: process.env.EMAIL_USER || "rabinkarmakar947@gmail.com",
     to: "rabinkarmakar947@gmail.com",
     subject: `${warningLevel}: Contact Form Alert`,
     html: `
