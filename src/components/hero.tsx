@@ -140,7 +140,7 @@ const Hero = () => {
                                     <div className="hover:animate-bounce animate-bounce">👋</div> hey, I&apos;m
                                 </div>
                             </div>
-                            <div className="flex  items-end max-md:items-start  w-full">
+                            <div className="flex  items-end max-md:items-start  max-md:flex-col w-full">
                                 <SplitText
                                     text="Rabin "
                                     className="text-3xl sm:text-4xl  md:text-6xl font-heading font-bold text-gray-900 max-md:mb-0 mb-6 leading-tight font-geist-mono "
