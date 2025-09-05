@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Roboto, Montserrat, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import RootClientLayout from "./root-client-layout";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 
 const playfairDisplay = Playfair_Display({
@@ -156,6 +157,7 @@ export default function RootLayout({
       >
         <RootClientLayout>
           {children}
+          <GoogleAnalytics gaId={process.env.GA4_MEASUREMENT_ID!} />
         </RootClientLayout>
       </body>
     </html>
