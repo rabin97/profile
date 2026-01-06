@@ -157,7 +157,7 @@ const Hero = () => {
                                 />
 
                                 <SplitText
-                                    text="Full Stack Developer"
+                                    text="Software Engineer"
                                     className="text-xl pl-1 md:text-2xl font-heading font-medium text-gray-700 mb-8 font-geist-mono"
                                     delay={60}
                                     duration={0.6}
@@ -171,7 +171,7 @@ const Hero = () => {
                                 />
                             </div>
                             <SplitText
-                                text="Passionate about crafting scalable and user-friendly applications with modern tech to create impactful digital experiences."
+                                text="Passionate about crafting scalable and user-friendly applications with modern tech and AI/ML to create impactful digital experiences."
                                 className="text-lg md:text-xl  text-gray-600 mb-12  mx-auto leading-relaxed -tracking-normal font-geist-mono"
                                 delay={30}
                                 duration={0.4}
