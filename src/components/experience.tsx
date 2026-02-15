@@ -17,7 +17,20 @@ export default function ModernTimeline() {
 
     const data: TimelineItem[] = [
         {
-            title: "Dec 2023 – Present",
+            title: "Sept 2025 – Present",
+            role: "Software Engineer",
+            company: "Digitap.ai",
+            description: "Leading frontend product development with focus on security, mentorship, and code quality.",
+            achievements: [
+                "Led frontend product development, owning Jira ticket creation, technical documentation, PR reviews, and daily execution",
+                "Guided and mentored frontend team members through code reviews, enforcing best practices for maintainable and scalable implementations",
+                "Implemented hybrid AES-RSA encryption architecture for secure frontend-backend communication",
+                "Refactored legacy frontend codebases to improve scalability, readability, and long-term maintainability"
+            ],
+            tech: ["React.js", "TypeScript", "AES-RSA Encryption", "Jira", "Frontend Architecture"],
+        },
+        {
+            title: "Dec 2023 – Sept 2025",
             role: "Full Stack Developer",
             company: "Explorogent International Services Pvt. Ltd. (Stackkaroo)",
             description: "Leading enterprise application development with focus on scalability and performance.",
@@ -61,7 +74,7 @@ export default function ModernTimeline() {
     const TimelineNode = ({ item, index }: { item: TimelineItem; index: number; }) => {
         return (
             <div
-                className="relative group"
+                className="relative group h-full flex flex-col"
             >
                 {/* Floating Date Badge */}
                 <motion.div
@@ -74,7 +87,7 @@ export default function ModernTimeline() {
 
                 {/* Main Content Card */}
                 <motion.div
-                    className={`relative ${index % 2 === 0 ? 'mr-auto ml-0' : 'ml-auto mr-0'}  p-6 rounded-2xl overflow-hidden ${item.bgColor} border border-gray-400  backdrop-blur-sm`}
+                    className={`relative flex-1 ${index % 2 === 0 ? 'mr-auto ml-0' : 'ml-auto mr-0'}  p-6 rounded-2xl overflow-hidden ${item.bgColor} border border-gray-400  backdrop-blur-sm`}
                     transition={{ type: "spring", stiffness: 300 }}
                 >
                     {/* Decorative Corner */}
