@@ -9,17 +9,6 @@ const Education = () => {
 
     const education = [
         {
-            id: 1,
-            degree: "M.Tech in Computer Science & Engineering",
-            school: "Bankura Unnayani Institute of Engineering",
-            period: "2024 – 2026",
-            location: "Bankura, India",
-            gpa: "8.09/10",
-            status: "Pursuing",
-            description: "Currently pursuing Master of Technology in Computer Science & Engineering with focus on advanced software engineering concepts and research.",
-            coursework: ["Advanced Algorithms", "Advanced DBMS", "Advanced Computer Network And Security", "Mobile Computing", "Data Mining", "Image Processing"],
-        },
-        {
             id: 2,
             degree: "B.Tech in Computer Science & Engineering",
             school: "Bankura Unnayani Institute of Engineering",
