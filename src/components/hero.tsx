@@ -1,20 +1,12 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import SplitText from "./ui/split-text"
 import { Button } from "./ui/button"
-import { Download, Loader2 } from "lucide-react"
 import { GitHub, Linkedin } from "./icons"
-import dynamic from "next/dynamic"
 import Image from "next/image"
-
-// import PdfViewer from "./ui/PdfViewer"
-const PdfViewer = dynamic(() => import("./ui/PdfViewer"), {
-    ssr: false,
-    loading: () => <div className="flex items-center justify-center h-full"><Loader2 className="animate-spin" /></div>
-})
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -29,16 +21,6 @@ const Hero = () => {
     const scrollIndicatorRef = useRef<HTMLDivElement>(null)
     const circleRef = useRef<HTMLDivElement>(null)
 
-
-    const [showPdfViewer, setShowPdfViewer] = useState(false);
-
-    const handleOpenViewer = () => {
-        setShowPdfViewer(true);
-    };
-
-    const handleCloseViewer = () => {
-        setShowPdfViewer(false);
-    };
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -197,35 +179,6 @@ const Hero = () => {
                                 >
                                     Projects
                                 </Button>
-
-                                <Button
-                                    size="lg"
-                                    fillColor="#000"
-                                    enableHoverAnimation
-                                    variant="outline"
-                                    className="h-14 hover:text-white  "
-                                    onClick={(e: React.MouseEvent) => {
-                                        e.preventDefault()
-                                        const link = document.createElement('a')
-                                        link.href = '/assets/resume_rabin_.pdf'
-                                        link.download = 'Rabin_Karmakar_Resume.pdf'
-                                        document.body.appendChild(link)
-                                        link.click()
-                                        document.body.removeChild(link)
-                                    }}
-                                >
-                                    <Download /> Resume
-                                </Button>
-                                <Button
-                                    size="lg"
-                                    fillColor="#000"
-                                    enableHoverAnimation
-                                    variant="outline"
-                                    className="h-14 hover:text-white  "
-                                    onClick={handleOpenViewer}
-                                >
-                                    View
-                                </Button>
                             </div>
 
                         </div>
@@ -273,13 +226,6 @@ const Hero = () => {
                     </div>
                 </a>
             </div>
-            {showPdfViewer && (
-                <PdfViewer
-                    fileUrl="/assets/resume_rabin_.pdf"
-                    fileName="resume_rabin_karmakar.pdf"
-                    onClose={handleCloseViewer}
-                />
-            )}
         </section>
     )
 }
